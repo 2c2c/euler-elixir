@@ -170,4 +170,24 @@ defmodule Euler do
   defp sum(list) do
     Enum.reduce(list, 1, fn(x, acc) -> elem(Integer.parse(x), 0) * acc end)
   end
+
+  @doc """
+  A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
+
+  a^2 + b^2 = c^2
+
+  There exists exactly one Pythagorean triplet for which a + b + c = 1000.
+  Find the product abc.
+  """
+  def p9 do
+    for i <- 1..1000,
+        j <- (i+1)..1000,
+        k <- (j+1)..1000,
+        i + j + k == 1000,
+        i*i + j*j == k*k do
+           i*j*k
+         end
+    |> List.first
+  end
+
 end
